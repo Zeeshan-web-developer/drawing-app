@@ -107,7 +107,7 @@ const DrawingApp = () => {
             eraserSize,
           }}
         />
-        <div className="toolbar">
+        <div className="toolbar p-4">
           <Stage
             ref={stageRef}
             width={800}

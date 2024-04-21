@@ -1,5 +1,10 @@
 import React from "react";
 import { CompactPicker } from "react-color";
+import { BsPencil } from "react-icons/bs";
+import { FaRegCircle } from "react-icons/fa";
+import { PiRectangle } from "react-icons/pi";
+import { CiEraser } from "react-icons/ci";
+import { MdOutlineRectangle } from "react-icons/md";
 
 function ToolSet({
   handleColorChange,
@@ -11,53 +16,43 @@ function ToolSet({
   eraserSize,
 }) {
   return (
-    <div className="flex flex-col myt-2">
-      <CompactPicker color={color} onChange={handleColorChange} />
-
-      <div className="flex gap-2">
-        <button
-          className={`tool-button ${tool === "pencil" && "active"}`}
+    <div className="flex flex-col border-black border-2 p-2 ">
+      <h2
+        className=" 
+              text-xl font-bold mb-2 text-center underline
+          "
+      >
+        Toolbar
+      </h2>
+      <div
+        className="grid grid-cols-2 gap-1 mb-8
+      
+    
+      "
+      >
+        <BsPencil
+          size={50}
+          className="tool-icon   cursor-pointer border-black border-2 p-2"
           onClick={() => handleToolChange("pencil")}
-        >
-          Pencil
-        </button>
-      </div>
-
-      <div className="flex gap-2">
-        <button
-          className={`tool-button ${tool === "eraser" && "active"}`}
-          onClick={() => handleToolChange("eraser")}
-        >
-          Eraser
-        </button>
-
-        {tool === "eraser" && (
-          <>
-            <button className="eraser-size-button" onClick={decreaseEraserSize}>
-              - Eraser Size: {eraserSize}px
-            </button>
-            <button className="eraser-size-button" onClick={increaseEraserSize}>
-              + Eraser Size: {eraserSize}px
-            </button>
-          </>
-        )}
-      </div>
-      <div className="flex gap-2">
-        <button
-          className={`tool-button ${tool === "circle" && "active"}`}
+        />
+        <FaRegCircle
+          size={50}
+          className="tool-icon  cursor-pointer border-black border-2 p-2"
           onClick={() => handleToolChange("circle")}
-        >
-          Circle
-        </button>
-      </div>
-      <div className="flex gap-2">
-        <button
-          className={`tool-button ${tool === "rectangle" && "active"}`}
+        />
+        <CiEraser
+          size={50}
+          className="tool-icon   cursor-pointer border-black border-2 p-2"
+          onClick={() => handleToolChange("eraser")}
+        />
+        <MdOutlineRectangle
+          size={50}
+          className="tool-icon   cursor-pointer border-black border-2 p-2"
           onClick={() => handleToolChange("rectangle")}
-        >
-          Rectangle
-        </button>
+        />
       </div>
+
+      <CompactPicker color={color} onChange={handleColorChange} />
     </div>
   );
 }
